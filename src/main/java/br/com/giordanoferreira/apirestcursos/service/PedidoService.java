@@ -65,7 +65,6 @@ public class PedidoService {
 
             cursosPedidos.add(cursoPedido);
         }
-
         pedido.setCursos(cursosPedidos);
 
         cursoPedidoRepository.saveAll(cursosPedidos);
@@ -146,8 +145,9 @@ public class PedidoService {
 
         BigDecimal totalPedido = atualizarTotalPedido(pedido);
         pedido.setTotal(totalPedido);
+        pedidoRepository.save(pedido);
 
-        return pedidoRepository.save(pedido);
+        return pedido;
     }
 
     public BigDecimal calcularTotal(PedidoCadastroDTO dto) {
